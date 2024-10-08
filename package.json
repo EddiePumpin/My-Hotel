@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "hardhat": "^2.22.12"
+  },
+  "name": "MyHotel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "ethers": "^6.13.3"
+  }
+}
