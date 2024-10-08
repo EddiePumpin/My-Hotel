@@ -2,12 +2,11 @@
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import {IHotelToken} from "@contract/HotelToken.sol"
 
 contract HotelBooking {
-    IERC20 public hotelToken; // ERC20 token for hotel ownership
+    IHotelToken public hotelToken; // ERC20 token for hotel ownership
     uint256 public immutable i_totalSupply; // Total supply of hotel tokens
-    uint256 public constant LOCK_DURATION = 180 days; // 6 months lock duration
-
     struct Booking {
         uint256 tokenAmount;
         uint256 lockTimestamp;
@@ -19,7 +18,7 @@ contract HotelBooking {
     event TokensUnlocked();
 
     constructor(address _hotelTokenAddress, uint256 totalSupply) {
-        hotelToken = IERC20(_hotelTokenAddress);
+        hotelToken = HotelToken(_hotelTokenAddress);
         i_totalSupply = totalSupply;
     }
 
