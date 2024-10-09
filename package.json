@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "@openzeppelin/contracts": "^5.0.2",
-    "hardhat": "^2.22.12"
+    "hardhat": "^2.22.13"
   },
   "name": "MyHotel",
   "version": "1.0.0",
