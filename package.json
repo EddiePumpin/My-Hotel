@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@openzeppelin/contracts": "^5.0.2",
     "hardhat": "^2.22.13"
   },
@@ -9,5 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "ethers": "^6.13.3"
-  }
+  },
+  "repository": "https://github.com/EddiePumpin/My-Hotel.git",
+  "author": "EddiePumpin <eddiepumpin759@gmail.com>"
 }
