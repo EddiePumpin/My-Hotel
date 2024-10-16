@@ -15,9 +15,10 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
       await networkConfig[chainId]["methUsdPriceFeed"]
   }
 
+  const _hotelTokenAddress = methERC20.address
   const totalSupply = networkConfig[chainId]["totalSupply"]
 
-  const args = [totalSupply]
+  const args = [_hotelTokenAddress, totalSupply]
   const myHotel = await deploy("MyHotel", {
     from: deployer,
     args: args,
