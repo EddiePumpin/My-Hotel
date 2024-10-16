@@ -18,7 +18,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     waitConfirmations: network.config.blockConfirmations || 1,
   })
 
-  log(`METH deployed at ${methERC20.address}`)
+  console.log(`METH deployed at ${methERC20.address}`)
 
   if (
     !developmentChains.includes(network.name) &&
