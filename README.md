@@ -7,7 +7,7 @@ Product details
 
 1. Product Name: Tokenized Hotel Room Booking
 
-2. Objective: To allow users/guests/travellers to book and stay in a specific room using cryptocurrency.
+2. Objective: To allow users/guests/travellers to book and stay in a specific room using cryptocurrency(ERC20)
 
 3. Description: The feature allows users/guests/travellers to book hotel rooms by holding a minimum of 0.05% and maximum of 25% of the room token. This room token are locked for 3 months after booking to prevent dumping of the token price.
 
