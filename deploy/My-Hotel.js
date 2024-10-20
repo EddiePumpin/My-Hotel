@@ -37,7 +37,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     log: true,
     waitConfirmaton: network.config.blockConfirmation || 1,
   })
-  console.log(`HotelToken at ${myHotel.address}`)
+  console.log(`HotelToken deployed at ${myHotel.address}`)
 
   if (
     !developmentChains.includes(network.name) &&
