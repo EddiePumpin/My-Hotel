@@ -1,24 +1,36 @@
-const { network } = require("../hardhat.config")
+const { network } = require("hardhat")
 const { developmentChains, networkConfig } = require("../helper-hardhat.config")
 const { verify } = require("../utils/verify")
 
 module.exports = async function ({ getNamedAccounts, deployments }) {
   const { deploy, log } = deployments
   const { deployer } = await getNamedAccounts()
+  const chainId = network.config.chainId
 
-  let methUsdPriceFeedAddress
+  let ethUsdPriceFeedAddress
+  log("----------------------------------------------------------------")
   if (developmentChains.includes(network.name)) {
-    const methUsdAggregator = await deployments.get("MockV3Aggregator")
-    const methUsdPriceFeedAddress = methUsdAggregator.address
+    const ethUsdAggregator = await deployments.get("MockV3Aggregator")
+    ethUsdPriceFeedAddress = ethUsdAggregator.address
   } else {
-    const methUsdPriceFeedAddress =
-      await networkConfig[chainId]["methUsdPriceFeed"]
+    const ethUsdPriceFeedAddress =
+      await networkConfig[chainId]["ethUsdPriceFeed"]
   }
 
-  const _hotelTokenAddress = methERC20.address
+  let hotelTokenAddress
+  if (developmentChains.includes(network.name)) {
+    const hotelToken = await deployments.get("MegaERC20")
+    hotelTokenAddress = hotelToken.address
+  } else {
+    hotelTokenAddress = networkConfig[chainId]["hotelTokenAddress"]
+  }
+
+  // const _hotelTokenAddress = methERC20.address
+  // const _hotelTokenAddress = networkConfig[chainId]["hotelTokenAddress"]
   const totalSupply = networkConfig[chainId]["totalSupply"]
 
-  const args = [_hotelTokenAddress, totalSupply]
+  const args = [hotelTokenAddress, totalSupply]
+
   const myHotel = await deploy("MyHotel", {
     from: deployer,
     args: args,
@@ -31,7 +43,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     !developmentChains.includes(network.name) &&
     process.env.ETHERSCAN_API_KEY
   ) {
-    await verify(myHotel.address, [methUsdPriceFeedAddress])
+    await verify(myHotel.address, [])
   }
   log("-------------------------------------------------")
 }
