@@ -25,8 +25,6 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     hotelTokenAddress = networkConfig[chainId]["hotelTokenAddress"]
   }
 
-  // const _hotelTokenAddress = methERC20.address
-  // const _hotelTokenAddress = networkConfig[chainId]["hotelTokenAddress"]
   const totalSupply = networkConfig[chainId]["totalSupply"]
 
   const args = [hotelTokenAddress, totalSupply]
