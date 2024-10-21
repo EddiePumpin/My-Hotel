@@ -33,6 +33,7 @@ contract MegaERC20 is ERC20 {
     uint256 amount
   ) public virtual override returns (bool) {
     address owner = _msgSender();
+    _allowances[msg.sender][spender] = amount;
     _approve(owner, spender, amount);
     return true;
   }

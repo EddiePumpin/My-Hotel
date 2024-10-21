@@ -83,6 +83,7 @@ const {
         })
         it("the allowance being set is accurate", async () => {
           await methERC20.approve(deployer, amount)
+          await methERC20.connect(accDeployer).approve(deployer, amount)
           const allowance = await methERC20.allowance(accDeployer, deployer)
           assert.equal(allowance.toString(), amount)
         })
